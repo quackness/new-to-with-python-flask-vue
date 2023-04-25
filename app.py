@@ -1,5 +1,6 @@
 # save this as app.py
 from flask import Flask
+from flask import render_template
 from dotenv import load_dotenv
 
 
@@ -13,4 +14,4 @@ if __name__ == '__main__':
 
 @app.route("/")
 def index():
-    return "<h1>Hello, World!</h1>"
+    return render_template('index.html')
