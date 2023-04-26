@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import render_template
 from flask import jsonify
+from flask import request
 
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
@@ -25,8 +26,9 @@ if __name__ == '__main__':
 def index():
     import models
     tasks = models.Task.query.all()
-    # return render_template('index.html')
-    return jsonify(tasks)
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify(tasks)
+    return render_template('index.html')
 
 
 with app.app_context():
