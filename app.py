@@ -1,4 +1,6 @@
 # save this as app.py
+
+
 from flask import Flask
 from flask import render_template
 
@@ -20,8 +22,9 @@ if __name__ == '__main__':
 
 @app.route("/")
 def index():
-    name = 'John Smith'
-    return render_template('index.html', name=name)
+    import models
+    tasks = models.Task.query.all()
+    return render_template('index.html')
 
 
 with app.app_context():
