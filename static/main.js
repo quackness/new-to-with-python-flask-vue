@@ -3,7 +3,7 @@ const { createApp } = Vue
 const TaskApp = {
   data() {
     return {
-      task: 'new task',
+      task: '',
       tasks: [
         { title: 'One' },
         { title: 'Two' }
