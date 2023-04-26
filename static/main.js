@@ -3,7 +3,7 @@ const { createApp } = Vue
 const TaskApp = {
   data() {
     return {
-      message: 'Hello world'
+      task: 'new task'
     }
   },
   delimiters: ['{', '}']
