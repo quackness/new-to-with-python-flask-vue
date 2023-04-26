@@ -16,9 +16,9 @@
   </form>
 
   <div class="mt-5">
-    <div class="card">
+    <div class="card" v-for="task, index in tasks" :key="index">
       <div class="card-body row justify-content-between px-4">
-        { task }
+        { task.title }
         <button type="submit" class="btn-close"></button>
       </div>
     </div>
