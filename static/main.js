@@ -36,6 +36,10 @@ const TaskApp = {
       await this.sendRequest(window.location + 'create', 'post', JSON.stringify(this.task))
       await this.getTasks()
       this.task.title = ""
+    },
+    async deleteTask(task) {
+      await this.sendRequest(window.location + 'delete', 'post', JSON.stringify(task))
+      await this.getTasks()
     }
   },
   delimiters: ['{', '}']
