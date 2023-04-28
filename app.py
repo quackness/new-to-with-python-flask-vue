@@ -55,5 +55,16 @@ def delete_task():
     return jsonify({'result': 'ok'}), 200
 
 
+@app.route('/complete', methods=['POST'])
+def complete_task():
+    import models
+    task_id = request.get_json().get('id')
+    task = models.Task.query.filter_by(id=task_id).first()
+    task.completed = True
+    db.session.add(task)
+    db.session.commit()
+    return jsonify({'result': 'ok'}), 200
+
+
 with app.app_context():
     db.create_all()
