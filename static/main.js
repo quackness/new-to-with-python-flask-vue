@@ -40,6 +40,10 @@ const TaskApp = {
     async deleteTask(task) {
       await this.sendRequest(window.location + 'delete', 'post', JSON.stringify(task))
       await this.getTasks()
+    },
+    async completeTask(task) {
+      await this.sendRequest(window.location + 'complete', 'post', JSON.stringify(task))
+      await this.getTasks()
     }
   },
   delimiters: ['{', '}']
