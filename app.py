@@ -29,6 +29,7 @@ def index():
     tasks = models.Task.query.all()
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return jsonify(tasks)
+    # //jsonify() xsend back as a string, this is what the client expects
     return render_template('index.html')
 
 
@@ -60,7 +61,7 @@ def complete_task():
     import models
     task_id = request.get_json().get('id')
     task = models.Task.query.filter_by(id=task_id).first()
-    task.completed = True
+    task.complete = True
     db.session.add(task)
     db.session.commit()
     return jsonify({'result': 'ok'}), 200

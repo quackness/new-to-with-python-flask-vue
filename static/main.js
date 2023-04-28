@@ -16,9 +16,11 @@ const TaskApp = {
 
     async sendRequest(url, method, data) {
       const myHeaders = new Headers({
+        //info on what I am sending 
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       })
+      //fetch is converts the input body into a json object/json body and sends it to a server
       const response = await fetch(url, {
         method: method,
         headers: myHeaders,
@@ -30,6 +32,7 @@ const TaskApp = {
     async getTasks() {
       const response = await this.sendRequest(window.location, 'get')
       this.tasks = await response.json()
+      //json() turns  a string into a json object
     },
     async createTask() {
       await this.getTasks()
